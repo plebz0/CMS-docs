@@ -148,8 +148,7 @@ const articleService = require('../services/articleService');
 `/models/storage.js`
 
 **Rola w aplikacji:**  
-Ten moduł pełni funkcję prostego magazynu danych — działa jak mini baza danych w pliku JSON.  
-Odpowiada za odczytywanie i zapisywanie artykułów do pliku `data/articles.json`.  
+  Odpowiada za odczytywanie i zapisywanie artykułów do pliku `data/articles.json`.  
 Wykorzystuje wbudowany moduł `fs` do operacji na plikach i zapewnia prosty interfejs do użycia w serwisach.
 
 ---
@@ -294,7 +293,7 @@ Pokazuje prosty komunikat o braku strony lub danych.
 **Opis:**
 Formularz do tworzenia nowego artykułu.
 Pozwala użytkownikowi wpisać tytuł, treść oraz autora, a następnie zapisać artykuł w systemie.
-Obsługuje również błędy walidacji (np. zbyt krótki tytuł lub treść).
+Obsługuje również błędy walidacji 
 
 **Zawartość:**
 
