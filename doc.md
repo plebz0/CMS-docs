@@ -173,7 +173,15 @@ Wykorzystuje wbudowany moduł `fs` do operacji na plikach i zapewnia prosty inte
 ```js
 const fs = require('fs');
 const path = require('path');
-const filePath = path.join(__dirname, '../data/articles.json');
+const DATA_PATH = path.join(__dirname, '..', '..', 'data', 'articles.json');
+async function readArticles() {
+    const data = await fs.readFile(DATA_PATH, 'utf-8');
+    return JSON.parse(data || '[]');
+}
+
+async function writeArticles(articles) {
+    await fs.writeFile(DATA_PATH, JSON.stringify(articles, null, 4), 'utf-8');
+}
 ```
 
 ### `routes/articles.js`
@@ -238,9 +246,6 @@ Każdy tytuł prowadzi do osobnej podstrony artykułu.
 - Pętla `forEach` renderująca listę artykułów  
 - Linki do `/articles/:slug`  
 
-**Wygląd:**  
-Prosta lista artykułów w stylu bloga.  
-Tytuły w formie linków, brak zbędnych elementów graficznych.
 
 ### `views/articles/show.ejs`
 **Opis:**  
@@ -255,9 +260,7 @@ To widok, który użytkownik widzi po kliknięciu w tytuł z listy.
 
 - Podpis z autorem
 
-**Wygląd:**
-Minimalistyczny układ przypominający klasyczny wpis blogowy.
-Duży tytuł, pod nim treść i mniejszy podpis z autorem.
+
 
 **Zawartość:**
 
@@ -283,11 +286,6 @@ Pokazuje prosty komunikat o braku strony lub danych.
 
 -Krótka informacja dla użytkownika
 
-**Wygląd:**
-Minimalistyczny ekran błędu w stylu informacyjnym.
-Zawiera tylko komunikat i prosty link „Wróć” do strony głównej lub listy artykułów.
-
-
 
 
 
@@ -308,10 +306,6 @@ Obsługuje również błędy walidacji (np. zbyt krótki tytuł lub treść).
 
 - Przycisk Zapisz do przesłania formularza
 
-**Wygląd:**
-Czysty, prosty formularz z trzema polami tekstowymi i przyciskiem.
-W przypadku błędów walidacji — komunikaty są wyświetlane nad formularzem w formie listy.
-Układ przypomina klasyczne formularze edycji w prostych CMS-ach.
 
 ### `views/partials/header.ejs`
 **Opis:**
@@ -324,8 +318,6 @@ Dołączany w innych widokach za pomocą include.
 
 - Nawigacja z linkami
 
-**Wygląd:**
-Prosty pasek nawigacyjny w górnej części strony.
 
 ### `views/partials/footer.ejs`
 
@@ -339,10 +331,7 @@ Zawiera proste informacje o autorze lub prawach autorskich.
 
 - Może zawierać linki do dodatkowych podstron (np. kontakt, o nas)
 
-**Wygląd:**
-Prosty, lekki układ na dole strony.
-Zazwyczaj wyśrodkowany tekst w mniejszym rozmiarze czcionki, w stylu minimalistycznym.
-Często ma szare tło lub cienką linię oddzielającą go od reszty treści.
+
 
 ## `public/css/style.css`
 **Opis:**
