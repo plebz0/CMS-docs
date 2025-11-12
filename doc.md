@@ -30,8 +30,31 @@ Aplikacja pozwala na:
 - **controllers** renderują **views** (na końcu zwracają gotową stronę EJS użytkownikowi)
 
 A wszystko startuje od **server.js**, który uruchamia całą aplikację.
+## 3. Struktura '/src'
+```
+src/
+├── app.js
+├── server.js
+├── controllers/
+│   └── articlesController.js
+├── models/
+│   └── storage.js
+├── routes/
+│   └── articles.js
+├── services/
+│   └── articleService.js
+└── views/
+    ├── articles/
+    │   ├── error.ejs
+    │   ├── list.ejs
+    │   ├── new.ejs
+    │   └── show.ejs
+    └── partials/
+        ├── footer.ejs
+        └── header.ejs
+  ```
 
-## 3. Główne moduły aplikacji
+## 4. Główne moduły aplikacji
 
 ---
 
@@ -233,7 +256,7 @@ Przetwarza dane artykułów, tworzy nowe wpisy i zwraca informacje potrzebne kon
 
 
 
-## 4. Opis wyglądu
+## 5. Opis wyglądu
 
 ### `views/articles/list.ejs`
 **Opis:**  
